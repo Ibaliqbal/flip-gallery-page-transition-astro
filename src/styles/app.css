@@ -6,16 +6,119 @@
   font-display: swap;
 }
 
+:root {
+  --vw: 1440;
+  --multiplier: 100vw;
+  --padding: calc(36 / var(--vw) * var(--multiplier));
+  --background: #020403;
+  --text: #ece9e4;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   width: 100%;
-  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "DM Sans", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#app {
+  width: 100%;
+  height: 100dvh;
+}
+
+.container__home {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: calc(18 / var(--vw) * var(--multiplier));
+  padding: var(--padding);
+}
+
+.grid__item {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  grid-area: var(--position, 1 / 1);
+  cursor: pointer;
+  transition: filter 0.35s ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .grid__item:hover {
+    filter: brightness(2);
+  }
+}
+
+.container__detail {
+  padding-block: var(--padding);
+  min-height: 100%;
+}
+
+.wrapper__list__image {
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  position: relative;
+}
+
+.item__image {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+}
+
+.next__item {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 / var(--vw) * var(--multiplier));
+}
+
+.next__item__image {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  position: relative;
+  overflow: hidden;
+}
+
+.next__item p {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.next__item .next__item__title {
+  font-size: calc(14 / var(--vw) * var(--multiplier));
+}
+
+.next__item .next__item__name {
+  font-size: calc(18 / var(--vw) * var(--multiplier));
 }

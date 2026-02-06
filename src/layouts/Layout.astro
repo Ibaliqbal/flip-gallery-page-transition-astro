@@ -16,23 +16,10 @@ const { template, uid } = Astro.props
 	</head>
 	<body data-barba="wrapper">
 		<div data-barba="container" data-barba-namespace={uid}>
-			<div data-page-template={template}>
+			<div data-page-template={template} id="app">
 				<slot />
 			</div>
 		</div>
 		<script  src="../scripts/app.js"></script>
 	</body>
 </html>
-
-<style>
-	* {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-	}
-
-	body {
-		width: 100%;
-		min-height: 100dvh;
-	}
-</style>

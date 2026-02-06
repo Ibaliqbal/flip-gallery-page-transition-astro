@@ -1,13 +1,14 @@
+import gsap from "gsap";
 import Scroll from "./lib/scroll";
+import barba from "@barba/core";
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(Flip);
 
 class App {
   constructor() {
-    this.init();
-    this.lenis = new Scroll();
-    this.lenis.init();
-  }
-
-  init() {
-    console.log("App initialized");
+    this.lenis = new Scroll().getInstance();
   }
 }
+
+new App();

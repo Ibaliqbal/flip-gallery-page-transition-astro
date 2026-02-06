@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { data } from "../scripts/data";
+
+export const getStaticPaths = () => {
+  return data.map((item) => {
+    return {
+      params: {
+        index: item.slug,
+      },
+      props: {
+        item,
+        nextItem: data[(data.indexOf(item) + 1) % data.length],
+      },
+    };
+  });
+};
+
+const { item, nextItem } = Astro.props;
+---
+
+<Layout uid={`detail__${item.slug}`} template="detail">
+  <div class="container__detail">
+    <div class="wrapper__list__image">
+      {
+        Array.from({ length: item.totalImage }).map((_, index) => (
+          <div class="item__image">
+            <img
+              loading="eager"
+              src={`/images/${item.slug}/image-${index + 1}.jpg`}
+              alt=""
+            />
+          </div>
+        ))
+      }
+      <div class="next__item">
+        <p class="next__item__title">Next item</p>
+        <a href={`/${nextItem.slug}`} class="next__item__image">
+          <img
+            loading="eager"
+            src={`/images/${nextItem.slug}/image-1.jpg`}
+            alt=""
+          />
+        </a>
+        <p class="next__item__name">{nextItem.name}</p>
+      </div>
+    </div>
+  </div>
+</Layout>
