@@ -405,5 +405,5 @@ class App {
 const app = new App();
 
 loadImages(() => {
-  // app.intro();
+  app.intro();
 });
