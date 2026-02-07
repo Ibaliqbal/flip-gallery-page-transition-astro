@@ -2,6 +2,11 @@ import Lenis from "lenis";
 
 class Scroll {
   constructor() {
+    this.lenis = null;
+    this.rafId = null;
+  }
+
+  init() {
     window.scrollTo(0, 0);
 
     this.lenis = new Lenis({
@@ -12,16 +17,34 @@ class Scroll {
       lerp: 0.1,
     });
 
-    this.loop();
-  }
-
-  loop() {
     const raf = (time) => {
-      this.lenis.raf(time);
-      requestAnimationFrame(raf);
+      this.lenis?.raf(time);
+      this.rafId = requestAnimationFrame(raf);
     };
 
-    requestAnimationFrame(raf);
+    this.rafId = requestAnimationFrame(raf);
+  }
+
+  stop() {
+    this.lenis?.stop();
+  }
+
+  start() {
+    this.lenis?.start();
+  }
+
+  scrollTop(immediate = true) {
+    this.lenis?.scrollTo(0, { immediate });
+  }
+
+  destroy() {
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
+
+    this.lenis?.destroy();
+    this.lenis = null;
   }
 
   getInstance() {

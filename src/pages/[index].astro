@@ -24,17 +24,18 @@ const { item, nextItem } = Astro.props;
     <div class="wrapper__list__image">
       {
         Array.from({ length: item.totalImage }).map((_, index) => (
-          <div class="item__image">
-            <img
-              loading="eager"
-              src={`/images/${item.slug}/image-${index + 1}.jpg`}
-              alt=""
-            />
+          <div class="item__image__outer">
+            <div class="item__image__inner">
+              <img
+                loading="eager"
+                src={`/images/${item.slug}/image-${index + 1}.jpg`}
+                alt=""
+              />
+            </div>
           </div>
         ))
       }
       <div class="next__item">
-        <p class="next__item__title">Next item</p>
         <a href={`/${nextItem.slug}`} class="next__item__image">
           <img
             loading="eager"
@@ -42,7 +43,6 @@ const { item, nextItem } = Astro.props;
             alt=""
           />
         </a>
-        <p class="next__item__name">{nextItem.name}</p>
       </div>
     </div>
   </div>
