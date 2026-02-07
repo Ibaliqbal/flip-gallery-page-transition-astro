@@ -21,6 +21,9 @@ const { item, nextItem } = Astro.props;
 
 <Layout uid={`detail__${item.slug}`} template="detail">
   <div class="container__detail">
+    <div class="detail__back__home">
+      <a href="/">Back Home</a>
+    </div>
     <div class="wrapper__list__image">
       {
         Array.from({ length: item.totalImage }).map((_, index) => (

@@ -1,25 +1,63 @@
 ---
-import "../styles/app.css"
+import "../styles/app.css";
 
-const { template, uid } = Astro.props
+const { template, uid } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body data-barba="wrapper">
-		<div data-barba="container" data-barba-namespace={uid}>
-			<div data-page-template={template} id="app">
-				<slot />
-			</div>
-		</div>
-		<script  src="../scripts/app.js"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Flip Page Transition Astro + Barba</title>
+  </head>
+  <body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace={uid}>
+      <div data-page-template={template} id="app">
+        <slot />
+      </div>
+    </div>
+    <div class="barba__page__transition">
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__bar"></div>
+      <div class="barba__page__transition__progress"></div>
+    </div>
+    <div class="information__bottom">
+      <div class="information__text">
+        <p>
+          Experiment Flip Page Transition <a
+            href="https://astro.build/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Astro
+          </a> + <a
+            href="https://barba.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Barba
+          </a>
+        </p>
+      </div>
+      <div class="information__github">
+        <a
+          target="_blank"
+          href="https://github.com/Ibaliqbal/flip-gallery-page-transition-astro"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
+      </div>
+    </div>
+    <script src="../scripts/app.js"></script>
+  </body>
 </html>
