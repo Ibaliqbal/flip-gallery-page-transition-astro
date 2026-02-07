@@ -8,6 +8,22 @@ gsap.registerPlugin(Flip);
 class App {
   constructor() {
     this.lenis = new Scroll().getInstance();
+
+    this.setPageTransition();
+  }
+
+  setPageTransition() {
+    barba.init({
+      prefetchIgnore: true,
+      transitions: [
+        {
+          name: "default-transition",
+          before: (data) => {
+            console.log(data);
+          },
+        },
+      ],
+    });
   }
 }
 
