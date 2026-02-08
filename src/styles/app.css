@@ -70,6 +70,8 @@ img {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
+  overflow: hidden;
+  will-change: opacity, pointer-events, visibility;
 }
 
 .barba__page__transition__progress {
@@ -247,6 +249,7 @@ img {
   .container__home {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: repeat(5, minmax(0, 1fr));
+    padding-block: calc(var(--padding) * 1.5);
   }
 
   .grid__item.pos_1_5 {
@@ -274,7 +277,7 @@ img {
   }
 
   .container__detail {
-    padding-block: calc(var(--padding) * 2);
+    padding-block: calc(var(--padding) * 2) calc(var(--padding) * 4.5);
   }
 
   .wrapper__list__image {
@@ -289,7 +292,7 @@ img {
   .detail__back__home a,
   .information__text p,
   .information__github a {
-    font-size: calc(24 / var(--vw) * var(--multiplier));
+    font-size: calc(36 / var(--vw) * var(--multiplier));
   }
 }
 
